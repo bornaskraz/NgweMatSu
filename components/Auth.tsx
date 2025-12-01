@@ -1,7 +1,11 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { signIn } from '../firebase';
+import { Wallet } from 'lucide-react';
 
 const Auth: React.FC = () => {
+  const [imageError, setImageError] = useState(false);
+
   const handleLogin = async () => {
     try {
       await signIn();
@@ -12,59 +16,58 @@ const Auth: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full bg-slate-950 flex flex-col items-center justify-between overflow-hidden font-sans">
+    <div className="relative h-screen w-full flex flex-col bg-emerald-900 overflow-hidden font-sans">
       
-      {/* Background Ambient Glow */}
-      <div className="absolute top-[-20%] left-[-20%] w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[20%] right-[-20%] w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
+      {/* Top Section - 65% Height - Emerald Gradient */}
+      <div className="h-[65%] w-full bg-gradient-to-br from-emerald-600 to-emerald-900 flex items-center justify-center relative">
+        {/* Abstract Glow Effects */}
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-emerald-400/20 rounded-full blur-[80px] pointer-events-none" />
+        <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-teal-300/10 rounded-full blur-[60px] pointer-events-none" />
 
-      {/* Main Content - Centered */}
-      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-xs mx-auto z-10 animate-fade-in-up">
-        
         {/* Logo Container */}
-        <div className="relative mb-10 group">
-          {/* Outer Glow Ring */}
-          <div className="absolute -inset-0.5 bg-gradient-to-br from-emerald-500 to-slate-500 rounded-3xl opacity-30 blur-sm group-hover:opacity-60 transition duration-700"></div>
-          
-          {/* Glass Card */}
-          <div className="relative w-32 h-32 bg-slate-900/80 backdrop-blur-2xl rounded-3xl border border-white/10 flex items-center justify-center overflow-hidden shadow-2xl">
-             <img 
-              src="/logo.jpg" 
-              alt="Ngwe Mat Su Logo" 
-              className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500" 
-            />
+        <div className="relative z-10 animate-fade-in-up">
+          <div className="w-32 h-32 rounded-[2rem] bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_0_50px_rgba(16,185,129,0.3)] p-5 flex items-center justify-center relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-50 group-hover:opacity-75 transition-opacity"></div>
+            
+            {/* Logic: Try to load the image, fallback to Icon if it fails or isn't found */}
+            {!imageError ? (
+              <img 
+                src="/app_logo.jpg" 
+                alt="Ngwe Mat Su Logo" 
+                className="w-full h-full object-cover rounded-xl shadow-lg drop-shadow-md relative z-10"
+                onError={() => setImageError(true)}
+              />
+            ) : (
+              <Wallet className="w-full h-full text-white relative z-10" />
+            )}
           </div>
-        </div>
-
-        {/* Text Content */}
-        <div className="text-center space-y-3">
-          <h1 className="text-3xl font-bold text-white tracking-tight">
-            Ngwe Mat Su
-          </h1>
-          <p className="text-gray-400 text-base font-medium tracking-wide">
-            Your Smart Digital Financer
-          </p>
         </div>
       </div>
 
-      {/* Bottom Section */}
-      <div className="w-full max-w-md px-6 pb-12 z-20">
-        <button
-          onClick={handleLogin}
-          className="w-full bg-white hover:bg-gray-100 active:bg-gray-200 text-slate-900 font-bold text-lg h-14 rounded-full shadow-[0_0_30px_-5px_rgba(255,255,255,0.15)] transition-all transform active:scale-95 flex items-center justify-center gap-3 animate-fade-in-up"
-          style={{ animationDelay: '0.2s', animationFillMode: 'backwards' }}
-        >
-          <img 
-            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" 
-            alt="Google" 
-            className="w-6 h-6" 
-          />
-          <span>Sign in with Google</span>
-        </button>
+      {/* Bottom Section - 35% Height - White Sheet */}
+      <div className="h-[35%] w-full bg-white rounded-t-[3rem] shadow-[0_-20px_60px_rgba(0,0,0,0.3)] flex flex-col items-center pt-12 px-8 relative z-20 animate-slide-up">
         
-        <p className="text-center text-slate-600 text-xs mt-6 font-medium">
-          Protected by Bank-Grade Security
-        </p>
+        {/* Text Content */}
+        <div className="text-center w-full">
+          <h2 className="text-emerald-600 font-semibold text-lg tracking-wide mb-1">Mingalarpar</h2>
+          <h1 className="text-3xl font-bold text-slate-900 tracking-tight">Ngwe Mat Su</h1>
+          <p className="text-slate-400 text-sm mt-2 font-medium">Smart Voice Expense Tracker</p>
+        </div>
+
+        {/* Action Button - Pushed to Bottom */}
+        <div className="mt-auto mb-8 w-full max-w-sm">
+          <button
+            onClick={handleLogin}
+            className="w-full bg-slate-900 hover:bg-slate-800 active:scale-95 text-white font-bold text-lg h-14 rounded-full shadow-2xl shadow-slate-900/30 transition-all flex items-center justify-center gap-3"
+          >
+            <img 
+              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" 
+              alt="Google" 
+              className="w-6 h-6" 
+            />
+            <span>Sign in with Google</span>
+          </button>
+        </div>
       </div>
     </div>
   );
