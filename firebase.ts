@@ -21,14 +21,14 @@ import {
   updateDoc
 } from "firebase/firestore";
 
-// TODO: Replace with your actual Firebase configuration
 const firebaseConfig = {
-  apiKey: process.env.VITE_FIREBASE_API_KEY || "mock-key",
-  authDomain: process.env.VITE_FIREBASE_AUTH_DOMAIN || "mock-app.firebaseapp.com",
-  projectId: process.env.VITE_FIREBASE_PROJECT_ID || "mock-app",
-  storageBucket: process.env.VITE_FIREBASE_STORAGE_BUCKET || "mock-app.appspot.com",
-  messagingSenderId: process.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "123456789",
-  appId: process.env.VITE_FIREBASE_APP_ID || "1:123456789:web:abcdef"
+  apiKey: "AIzaSyCVTTfur5Mwx1NeEjPBG72AcTtmzQ9sKEo",
+  authDomain: "ngwe-mat-su.firebaseapp.com",
+  projectId: "ngwe-mat-su",
+  storageBucket: "ngwe-mat-su.firebasestorage.app",
+  messagingSenderId: "797196313318",
+  appId: "1:797196313318:web:c7dcadbb17ec78d297d127",
+  measurementId: "G-13Y9LSFNPM"
 };
 
 const app = initializeApp(firebaseConfig);

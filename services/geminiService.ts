@@ -1,8 +1,7 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { TransactionType } from "../types";
 
-// The instruction mandated using process.env.API_KEY, assuming config handles it.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: "AIzaSyAx70fdo9rFGNICKXmUBmU4UH8wOavqS94" });
 
 const modelName = "gemini-2.5-flash";
 
