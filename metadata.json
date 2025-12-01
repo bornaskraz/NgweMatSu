@@ -1,0 +1,7 @@
+{
+  "name": "Ngwe Mat Su",
+  "description": "A smart AI-powered expense and income tracker optimized for the Myanmar language, featuring voice-to-text logging and comprehensive analytics.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
