@@ -15,8 +15,20 @@ const Auth: React.FC = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 p-4 transition-colors">
       <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center space-y-6">
         <div className="flex justify-center">
-          <div className="bg-primary-100 dark:bg-primary-900/30 p-4 rounded-full">
-            <Wallet className="w-12 h-12 text-primary dark:text-primary-dark" />
+          <div className="w-24 h-24 mb-2">
+            <img 
+              src="./logo.png" 
+              alt="Ngwe Mat Su Logo" 
+              className="w-full h-full object-contain drop-shadow-md" 
+              onError={(e) => {
+                // Fallback to icon if image fails to load
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.parentElement?.classList.add('flex', 'items-center', 'justify-center', 'bg-primary-100', 'dark:bg-primary-900/30', 'rounded-full', 'p-4');
+                const icon = document.createElement('div');
+                icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary dark:text-primary-dark"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V12a2 2 0 0 0-2-2H6a2 2 0 0 1-2-2Z"/><path d="M12 12v6"/><path d="M16 12v6"/></svg>';
+                e.currentTarget.parentElement?.appendChild(icon);
+              }}
+            />
           </div>
         </div>
         
