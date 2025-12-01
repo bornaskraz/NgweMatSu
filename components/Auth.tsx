@@ -1,5 +1,6 @@
 import React from 'react';
 import { signIn } from '../firebase';
+import { ShieldCheck, Sparkles } from 'lucide-react';
 
 const Auth: React.FC = () => {
   const handleLogin = async () => {
@@ -11,42 +12,66 @@ const Auth: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-gray-50 dark:bg-gray-900 transition-colors">
+    <div className="min-h-screen w-full relative overflow-hidden bg-gradient-to-br from-emerald-600 via-teal-700 to-gray-900 flex flex-col items-center justify-center p-6">
       
-      {/* Top/Center Branding Section */}
-      <div className="flex-1 flex flex-col items-center justify-center p-8 text-center animate-fade-in">
-        <div className="w-32 h-32 mb-8 relative">
-          <div className="absolute inset-0 bg-primary/10 dark:bg-primary/5 rounded-3xl rotate-6 transform transition-transform group-hover:rotate-12"></div>
-          <div className="absolute inset-0 bg-white dark:bg-gray-800 rounded-3xl shadow-xl flex items-center justify-center overflow-hidden">
+      {/* Animated Background Blobs */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-emerald-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+      <div className="absolute top-0 right-0 w-72 h-72 bg-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+      <div className="absolute -bottom-32 left-20 w-72 h-72 bg-green-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+
+      {/* Main Glass Card */}
+      <div className="w-full max-w-md bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-8 flex flex-col items-center text-center relative z-10 animate-fade-in-up">
+        
+        {/* Logo Container with Glow */}
+        <div className="mb-8 relative group cursor-default">
+          <div className="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full blur opacity-40 group-hover:opacity-75 transition duration-500"></div>
+          <div className="relative w-28 h-28 bg-white rounded-2xl shadow-lg flex items-center justify-center p-3 transform transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3">
+             {/* Added ?v=4 to force browser to load new logo */}
              <img 
-              src="logo.png?v=3" 
+              src="/logo.png?v=4" 
               alt="Ngwe Mat Su Logo" 
-              className="w-full h-full object-contain p-2" 
+              className="w-full h-full object-contain" 
             />
           </div>
         </div>
-        
-        <div className="space-y-2">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white tracking-tight">Ngwe Mat Su</h1>
-          <h2 className="text-2xl text-primary font-bold">ငွေမှတ်စု</h2>
-          <p className="text-gray-500 dark:text-gray-400 max-w-xs mx-auto mt-4 leading-relaxed">
-            Your smart companion for tracking daily expenses and income effortlessly.
-          </p>
-        </div>
-      </div>
 
-      {/* Bottom Action Section */}
-      <div className="w-full max-w-md mx-auto p-8 pb-12 animate-slide-up">
+        {/* Branding Text */}
+        <h1 className="text-3xl font-bold text-white mb-2 tracking-tight drop-shadow-sm">
+          Ngwe Mat Su
+        </h1>
+        <h2 className="text-xl text-emerald-200 font-medium mb-6">
+          ငွေမှတ်စု
+        </h2>
+        
+        <p className="text-gray-200 text-sm mb-10 leading-relaxed max-w-xs opacity-90">
+          Your personal AI financial companion. <br/>
+          Smart tracking for a wealthier future.
+        </p>
+
+        {/* Login Button */}
         <button
           onClick={handleLogin}
-          className="w-full flex items-center justify-center gap-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-800 dark:text-white font-semibold py-4 px-6 rounded-2xl transition-all shadow-lg shadow-gray-200/50 dark:shadow-none active:scale-95"
+          className="w-full bg-white hover:bg-gray-50 text-gray-900 font-bold py-4 px-6 rounded-xl flex items-center justify-center gap-3 transition-all transform hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-900/20 active:scale-95 group"
         >
-          <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" className="w-6 h-6" />
-          <span>Continue with Google</span>
+          <img 
+            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" 
+            alt="Google" 
+            className="w-6 h-6" 
+          />
+          <span className="font-semibold">Continue with Google</span>
         </button>
-        
-        <p className="text-center text-xs text-gray-400 dark:text-gray-500 mt-6">
-          By continuing, you agree to our Terms & Privacy Policy.
+
+        {/* Security Badge */}
+        <div className="mt-8 flex items-center gap-2 text-xs text-emerald-200/60">
+           <ShieldCheck size={14} />
+           <span>Secure & Encrypted</span>
+        </div>
+      </div>
+      
+      {/* Footer */}
+      <div className="absolute bottom-6 text-center">
+        <p className="text-xs text-white/30">
+          &copy; {new Date().getFullYear()} Ngwe Mat Su. All rights reserved.
         </p>
       </div>
     </div>

@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Ngwe Mat Su (ငွေမှတ်စု)</title>
-    <link rel="icon" type="image/png" href="logo.png?v=3" />
-    <link rel="apple-touch-icon" href="logo.png?v=3" />
+    <link rel="icon" type="image/png" href="/logo.png?v=4" />
+    <link rel="apple-touch-icon" href="/logo.png?v=4" />
     <link rel="manifest" href="manifest.json" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -23,6 +23,23 @@
                 dark: '#059669',
               },
               danger: '#ef4444',
+            },
+            animation: {
+              blob: "blob 7s infinite",
+              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              blob: {
+                "0%": { transform: "translate(0px, 0px) scale(1)" },
+                "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                "100%": { transform: "translate(0px, 0px) scale(1)" },
+              },
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              }
             }
           }
         }
