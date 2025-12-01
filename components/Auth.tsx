@@ -19,18 +19,9 @@ const Auth: React.FC = () => {
           <div className="absolute inset-0 bg-primary/10 dark:bg-primary/5 rounded-3xl rotate-6 transform transition-transform group-hover:rotate-12"></div>
           <div className="absolute inset-0 bg-white dark:bg-gray-800 rounded-3xl shadow-xl flex items-center justify-center overflow-hidden">
              <img 
-              src="/logo.png?v=2" 
+              src="logo.png?v=3" 
               alt="Ngwe Mat Su Logo" 
               className="w-full h-full object-contain p-2" 
-              onError={(e) => {
-                // Fallback styling if image missing
-                e.currentTarget.style.display = 'none';
-                e.currentTarget.parentElement?.classList.add('p-6');
-                const parent = e.currentTarget.parentElement;
-                if (parent && !parent.querySelector('svg')) {
-                   parent.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V12a2 2 0 0 0-2-2H6a2 2 0 0 1-2-2Z"/><path d="M12 12v6"/><path d="M16 12v6"/></svg>';
-                }
-              }}
             />
           </div>
         </div>
