@@ -19,7 +19,7 @@ const Auth: React.FC = () => {
           <div className="absolute inset-0 bg-primary/10 dark:bg-primary/5 rounded-3xl rotate-6 transform transition-transform group-hover:rotate-12"></div>
           <div className="absolute inset-0 bg-white dark:bg-gray-800 rounded-3xl shadow-xl flex items-center justify-center overflow-hidden">
              <img 
-              src="logo.png" 
+              src="/logo.png?v=2" 
               alt="Ngwe Mat Su Logo" 
               className="w-full h-full object-contain p-2" 
               onError={(e) => {
