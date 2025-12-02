@@ -29,13 +29,16 @@ const Auth: React.FC = () => {
           <div className="w-32 h-32 rounded-[2rem] bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_0_50px_rgba(16,185,129,0.3)] p-5 flex items-center justify-center relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-50 group-hover:opacity-75 transition-opacity"></div>
             
-            {/* Logic: Try to load the image, fallback to Icon if it fails or isn't found */}
+            {/* Logic: Point specifically to the src/assets folder with relative dot */}
             {!imageError ? (
               <img 
-                src="/app_logo.jpg" 
+                src="./src/assets/app_logo.jpg" 
                 alt="Ngwe Mat Su Logo" 
                 className="w-full h-full object-cover rounded-xl shadow-lg drop-shadow-md relative z-10"
-                onError={() => setImageError(true)}
+                onError={(e) => {
+                  console.error("Image failed to load:", e.currentTarget.src);
+                  setImageError(true);
+                }}
               />
             ) : (
               <Wallet className="w-full h-full text-white relative z-10" />

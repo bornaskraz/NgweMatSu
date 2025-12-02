@@ -1,3 +1,4 @@
+
 {
   "name": "Ngwe Mat Su (ငွေမှတ်စု)",
   "short_name": "Ngwe Mat Su",
@@ -7,7 +8,7 @@
   "theme_color": "#10b981",
   "icons": [
     {
-      "src": "/app_logo.jpg",
+      "src": "./src/assets/app_logo.jpg",
       "sizes": "192x192 512x512",
       "type": "image/jpeg"
     }
