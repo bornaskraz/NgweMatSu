@@ -1,7 +1,7 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { TransactionType } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: "AIzaSyAx70fdo9rFGNICKXmUBmU4UH8wOavqS94" });
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 const modelName = "gemini-2.5-flash";
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { auth, logout } from './firebase';
-import { onAuthStateChanged, User } from 'firebase/auth';
+import firebase from 'firebase/compat/app';
 import { UserProfile, Transaction, Language, ThemeMode } from './types';
 import { getTransactions, addTransaction, deleteTransaction } from './services/transactionService';
 import { TRANSLATIONS } from './constants';
@@ -15,7 +15,7 @@ import AddTransactionModal from './components/AddTransactionModal';
 import { Moon, Sun, Globe, LogOut, Download } from 'lucide-react';
 
 const App: React.FC = () => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<firebase.User | null>(null);
   const [loading, setLoading] = useState(true);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [activeTab, setActiveTab] = useState<'dashboard' | 'list' | 'settings'>('dashboard');
@@ -27,7 +27,7 @@ const App: React.FC = () => {
 
   // Auth Listener
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
       setUser(currentUser);
       setLoading(false);
     });

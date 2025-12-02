@@ -1,24 +1,8 @@
-import { initializeApp } from "firebase/app";
-import { 
-  getAuth, 
-  GoogleAuthProvider, 
-  signInWithPopup, 
-  signOut as firebaseSignOut, 
-  onAuthStateChanged 
-} from "firebase/auth";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
 import { 
   getFirestore, 
-  enableIndexedDbPersistence, 
-  collection, 
-  query, 
-  where, 
-  getDocs, 
-  addDoc, 
-  deleteDoc, 
-  doc, 
-  orderBy,
-  Timestamp,
-  updateDoc
+  enableIndexedDbPersistence
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -31,10 +15,16 @@ const firebaseConfig = {
   measurementId: "G-13Y9LSFNPM"
 };
 
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+// Initialize Firebase using compat
+const app = firebase.initializeApp(firebaseConfig);
+
+// Export compat Auth for use in App.tsx (onAuthStateChanged) and internal methods
+export const auth = firebase.auth();
+
+// Export modular Firestore for use in transactionService.ts
 export const db = getFirestore(app);
-export const googleProvider = new GoogleAuthProvider();
+
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 // Enable offline persistence
 try {
@@ -51,7 +41,8 @@ try {
 
 export const signIn = async () => {
   try {
-    await signInWithPopup(auth, googleProvider);
+    // Compat sign in
+    await auth.signInWithPopup(googleProvider);
   } catch (error) {
     console.error("Error signing in", error);
     throw error;
@@ -59,5 +50,6 @@ export const signIn = async () => {
 };
 
 export const logout = async () => {
-  await firebaseSignOut(auth);
+  // Compat sign out
+  await auth.signOut();
 };

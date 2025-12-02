@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { signIn } from '../firebase';
 import { Wallet } from 'lucide-react';
