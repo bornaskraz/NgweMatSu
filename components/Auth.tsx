@@ -26,7 +26,7 @@ const Auth: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-50 group-hover:opacity-75 transition-opacity"></div>
             
             <img 
-              src="/app_logo.jpg" 
+              src="./app_logo.jpg" 
               alt="Ngwe Mat Su Logo" 
               className="w-full h-full object-cover rounded-xl shadow-lg drop-shadow-md relative z-10"
             />
