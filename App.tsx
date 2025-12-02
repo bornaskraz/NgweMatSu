@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { auth, logout } from './firebase';
 import firebase from 'firebase/compat/app';
-import { UserProfile, Transaction, Language, ThemeMode } from './types';
+import { Transaction, Language, ThemeMode } from './types';
 import { getTransactions, addTransaction, deleteTransaction } from './services/transactionService';
 import { TRANSLATIONS } from './constants';
 

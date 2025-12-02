@@ -1,8 +1,9 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import { 
-  getFirestore, 
-  enableIndexedDbPersistence
+  initializeFirestore, 
+  persistentLocalCache, 
+  persistentMultipleTabManager
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -15,29 +16,21 @@ const firebaseConfig = {
   measurementId: "G-13Y9LSFNPM"
 };
 
-// Initialize Firebase using compat
+// Initialize Firebase using compat for Auth (legacy support for simple usage)
 const app = firebase.initializeApp(firebaseConfig);
 
-// Export compat Auth for use in App.tsx (onAuthStateChanged) and internal methods
+// Export compat Auth for use in App.tsx (onAuthStateChanged)
 export const auth = firebase.auth();
-
-// Export modular Firestore for use in transactionService.ts
-export const db = getFirestore(app);
 
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-// Enable offline persistence
-try {
-  enableIndexedDbPersistence(db).catch((err) => {
-    if (err.code == 'failed-precondition') {
-      console.warn('Multiple tabs open, persistence can only be enabled in one tab at a a time.');
-    } else if (err.code == 'unimplemented') {
-      console.warn('The current browser does not support all of the features required to enable persistence');
-    }
-  });
-} catch (e) {
-  // Ignore errors in non-browser environments during build
-}
+// Initialize Firestore with modern persistence settings
+// This replaces the deprecated enableIndexedDbPersistence
+export const db = initializeFirestore(app, {
+  localCache: persistentLocalCache({
+    tabManager: persistentMultipleTabManager()
+  })
+});
 
 export const signIn = async () => {
   try {
