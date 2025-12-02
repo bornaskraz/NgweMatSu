@@ -7,7 +7,7 @@ export default defineConfig({
   // TODO: REPLACE '/repo-name/' WITH YOUR ACTUAL GITHUB REPOSITORY NAME SLASHES INCLUDED
   // Example: If your repo url is https://github.com/username/my-expense-tracker
   // Then change this to: base: '/my-expense-tracker/'
-  base: '/repo-name/', 
+  base: '/NgweMatSu/', 
   build: {
     outDir: 'dist',
     sourcemap: false
